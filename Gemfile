@@ -39,12 +39,14 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'guard-rspec'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
+  gem 'fabrication', '2.11.3'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  gem 'pry', '0.10.2'
+  gem 'pry-nav', '0.2.4'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
