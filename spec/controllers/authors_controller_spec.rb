@@ -55,8 +55,8 @@ describe AuthorsController do
       end
       
       it "sets the 'success' flash message" do
-      post :create, author: Fabricate.attributes_for(:author)
-      expect(flash[:success]).to eq('Author has been created.')
+        post :create, author: Fabricate.attributes_for(:author)
+        expect(flash[:success]).to eq('Author has been created.')
       end
       
       context "an unsuccessful create" do
@@ -75,6 +75,20 @@ describe AuthorsController do
         end
       end
     end 
+
+    describe "GET #edit" do
+      let(:author) { Fabricate(:author) }
+
+      it "finds the author with the given ID and assigns to @author" do
+        get :edit, id: author
+        expect(assigns(:author)).to eq(author)
+      end
+
+      it "renders the edit template" do
+        get :edit, id: author
+        expect(response).to render_template :edit
+      end
+    end
   end
 end
 

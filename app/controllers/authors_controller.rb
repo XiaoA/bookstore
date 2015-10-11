@@ -23,6 +23,11 @@ class AuthorsController < ApplicationController
     end
   end
 
+  def edit
+    @author = Author.find(params[:id])
+    render :edit
+  end
+
   private
 
   def author_params
