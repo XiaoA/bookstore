@@ -58,37 +58,38 @@ describe AuthorsController do
         post :create, author: Fabricate.attributes_for(:author)
         expect(flash[:success]).to eq('Author has been created.')
       end
-      
-      context "an unsuccessful create" do
-        it "does not save the new author object with valid inputs" do
-          post :create, author: Fabricate.attributes_for(:author, first_name: nil)
-          expect(Author.count).to eq(0)
-        end
+    end
+    
+    context "an unsuccessful create" do
+      it "does not save the new author object with valid inputs" do
+        post :create, author: Fabricate.attributes_for(:author, first_name: nil)
+        expect(Author.count).to eq(0)
+      end
 
-        it "renders the new template" do
-          post :create, author: Fabricate.attributes_for(:author, first_name: nil)
-          expect(response).to render_template :new
-        end
-        it "sets the 'failure' flash message" do
-          post :create, author: Fabricate.attributes_for(:author, first_name: nil)
-          expect(flash[:danger]).to eq('Author has not been created.')
-        end
+      it "renders the new template" do
+        post :create, author: Fabricate.attributes_for(:author, first_name: nil)
+        expect(response).to render_template :new
+      end
+      it "sets the 'failure' flash message" do
+        post :create, author: Fabricate.attributes_for(:author, first_name: nil)
+        expect(flash[:danger]).to eq('Author has not been created.')
       end
     end 
+  end
+  
+  describe "GET #edit" do
+    let(:author) { Fabricate(:author) }
 
-    describe "GET #edit" do
-      let(:author) { Fabricate(:author) }
+    it "finds the author with the given ID and assigns to @author" do
+      get :edit, id: author
+      expect(assigns(:author)).to eq(author)
+    end
 
-      it "finds the author with the given ID and assigns to @author" do
-        get :edit, id: author
-        expect(assigns(:author)).to eq(author)
-      end
-
-      it "renders the edit template" do
-        get :edit, id: author
-        expect(response).to render_template :edit
-      end
+    it "renders the edit template" do
+      get :edit, id: author
+      expect(response).to render_template :edit
     end
   end
 end
+
 
