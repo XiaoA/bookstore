@@ -128,6 +128,25 @@ describe AuthorsController do
         put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
         expect(flash[:danger]).to eq('Author has not been updated.')
       end
-    end      
+    end
+  end
+
+  describe "DELETE #destroy" do
+    let(:author) { Fabricate(:author) }
+
+    it "deletes the author with a given ID" do 
+      delete :destroy, id: author
+      expect(Author.count).to eq(0)
+    end
+
+    it "sets the flash 'success' message" do
+      delete :destroy, id: author
+      expect(flash[:success]).to eq('Author has been deleted.')
+    end
+
+    it "redirects to the index page" do
+      delete :destroy, id: author
+      expect(response).to redirect_to authors_path
+    end
   end
 end
