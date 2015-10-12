@@ -28,6 +28,17 @@ class AuthorsController < ApplicationController
     render :edit
   end
 
+  def update
+    @author = Author.find(params[:id])
+    if @author.update(author_params)
+      flash[:success] = "Author has been updated."
+      redirect_to @author
+    else
+      flash[:danger] = "Author has not been updated."
+      render :edit
+    end
+  end
+
   private
 
   def author_params

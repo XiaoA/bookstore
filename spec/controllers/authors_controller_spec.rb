@@ -90,6 +90,44 @@ describe AuthorsController do
       expect(response).to render_template :edit
     end
   end
+
+  describe "PUT #update" do
+    context "a successful update" do
+      let(:author) { Fabricate(:author, first_name: 'Karen') }
+
+      it "updates the modified author object" do
+        put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
+        expect(Author.first.first_name).to eq('Karen')
+      end
+
+      it "redirects to the show action " do
+        put :update, author: Fabricate.attributes_for(:author, first_name: 'Karen'), id: author.id
+        expect(response).to redirect_to author_path(Author.first)
+      end
+
+      it "sets the success flash message" do
+        put :update, author: Fabricate.attributes_for(:author, first_name: 'Karen'), id: author.id
+        expect(flash[:success]).to eq('Author has been updated.')
+      end
+    end
+
+    context "an unsucessful update" do
+      let(:author) { Fabricate(:author, first_name: 'Karen') }
+
+      it "updates the modified author object" do
+        put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
+        expect(Author.first.first_name).to eq('Karen')
+      end
+
+      it "renders the edit template" do
+        put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
+        expect(response).to render_template :edit
+      end
+
+      it "sets the danger flash message" do
+        put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
+        expect(flash[:danger]).to eq('Author has not been updated.')
+      end
+    end      
+  end
 end
-
-
