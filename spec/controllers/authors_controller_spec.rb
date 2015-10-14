@@ -1,152 +1,133 @@
 require 'rails_helper'
 
-describe AuthorsController do
-  describe "GET #index" do
-    it "assigns the author object to @author" do
-      author1 = Fabricate(:author)
-      author2 = Fabricate(:author)
-
+RSpec.describe AuthorsController, :type => :controller do
+    describe "GET #index" do
+    it "returns a successful HTTP request status code (200)" do
       get :index
-      expect(assigns(:authors)).to match_array([author1, author2])
-    end
-    it "render the index template" do
-      get :index
-      expect(response).to render_template :index
-    end
-  end
 
-  describe "GET #show" do
-    let(:author) { Fabricate(:author) }
-    it "finds the author with a given id and assigns it to @author" do
-      
-      get :show, id: author
-      expect(assigns(:author)).to eq(author)
+      expect(response).to have_http_status(:success)
+    end
     end
 
-    it "renders the show template" do
-      
-      get :show, id: author
-      expect(response).to render_template :show
-    end
-  end
+    describe "GET #show" do
+          it "returns a successful HTTP request status code" do
+        author = Fabricate(:author)
+        get :show, id: author.id
 
-  describe "GET #new" do
-    it "assigns a new author object to @author" do
-      get :new
-      expect(assigns(:author)).to be_instance_of(Author)
+        expect(response).to have_http_status(:success)
+          end
     end
 
-    it "renders the new template" do
-      get :new
-      expect(response).to render_template('new')
-    end
-  end
+    describe "GET #new" do
+      it "returns a successful HTTP request status code" do
+        get :new
 
-  describe "POST #create" do
-    context "a successful create" do
-      it "saves the new author object" do
-        post :create, author: Fabricate.attributes_for(:author)
-        expect(Author.count).to eq(1)
-      end
-      
-      it "redirects to the show action" do
-        post :create, author: Fabricate.attributes_for(:author)
-        expect(response).to redirect_to author_path(Author.first)
-      end
-      
-      it "sets the 'success' flash message" do
-        post :create, author: Fabricate.attributes_for(:author)
-        expect(flash[:success]).to eq('Author has been created.')
+        expect(response).to have_http_status(:success)
       end
     end
+
+    describe "POST #create" do
+      context "a successful create" do
+        it "saves the new author object" do
+          post :create, author: Fabricate.attributes_for(:author)
+          
+          expect(Author.count).to eq(1)
+        end
+
+        it "redirects to the author show action" do
+          post :create, author: Fabricate.attributes_for(:author)
+
+          expect(response).to redirect_to author_path(Author.first)
+        end
+
+        it "sets the 'success' flash message" do
+          post :create, author: Fabricate.attributes_for(:author)
+          
+          expect(flash[:success]).to eq('Author has been created.')
+        end
+      end
+
+      context "an unsuccessful create" do
+        it "does not save the new author object with invalid inputs" do
+          post :create, author: Fabricate.attributes_for(:author, first_name: nil)
+          expect(Author.count).to eq(0)
+        end
+
+        it "sets the 'failure' flash message" do
+          post :create, author: Fabricate.attributes_for(:author, first_name: nil)
+          expect(flash[:danger]).to eq('Author has not been created.')
+        end
+      end 
+    end
+
+    ##
     
-    context "an unsuccessful create" do
-      it "does not save the new author object with valid inputs" do
-        post :create, author: Fabricate.attributes_for(:author, first_name: nil)
+    describe "GET #edit" do
+      let(:author) { Fabricate(:author) }
+
+      it "sends a successsful edit request" do
+        get :edit, id: author.id
+
+        expect(response).to have_http_status(:success)
+      end
+
+      it "finds the author with the given ID and assigns to @author" do
+        get :edit, id: author.id
+        expect(assigns(:author)).to eq(author)
+      end
+    end
+
+    describe "PUT #update" do
+      context "a successful update" do
+        let(:author) { Fabricate(:author, first_name: 'Karen') }
+
+        it "updates the modified author object" do
+          put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
+          expect(Author.first.first_name).to eq('Karen')
+        end
+
+        it "redirects to the show action " do
+          put :update, author: Fabricate.attributes_for(:author, first_name: 'Karen'), id: author.id
+          expect(response).to redirect_to author_path(Author.first)
+        end
+
+        it "sets the success flash message" do
+          put :update, author: Fabricate.attributes_for(:author, first_name: 'Karen'), id: author.id
+          expect(flash[:success]).to eq('Author has been updated.')
+        end
+      end
+
+      context "an unsucessful update" do
+        let(:author) { Fabricate(:author, first_name: 'Karen') }
+
+        it "does not update the modified author object" do
+          put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
+          expect(Author.first.first_name).to eq('Karen')
+        end
+
+        it "sets the danger flash message" do
+          put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
+          expect(flash[:danger]).to eq('Author has not been updated.')
+        end
+      end
+    end
+
+    describe "DELETE #destroy" do
+      let(:author) { Fabricate(:author) }
+
+      it "deletes the author with a given ID" do 
+        delete :destroy, id: author.id
         expect(Author.count).to eq(0)
       end
 
-      it "renders the new template" do
-        post :create, author: Fabricate.attributes_for(:author, first_name: nil)
-        expect(response).to render_template :new
-      end
-      it "sets the 'failure' flash message" do
-        post :create, author: Fabricate.attributes_for(:author, first_name: nil)
-        expect(flash[:danger]).to eq('Author has not been created.')
-      end
-    end 
-  end
-  
-  describe "GET #edit" do
-    let(:author) { Fabricate(:author) }
-
-    it "finds the author with the given ID and assigns to @author" do
-      get :edit, id: author
-      expect(assigns(:author)).to eq(author)
-    end
-
-    it "renders the edit template" do
-      get :edit, id: author
-      expect(response).to render_template :edit
-    end
-  end
-
-  describe "PUT #update" do
-    context "a successful update" do
-      let(:author) { Fabricate(:author, first_name: 'Karen') }
-
-      it "updates the modified author object" do
-        put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
-        expect(Author.first.first_name).to eq('Karen')
+      it "sets the flash 'success' message" do
+        delete :destroy, id: author.id
+        expect(flash[:success]).to eq('Author has been deleted.')
       end
 
-      it "redirects to the show action " do
-        put :update, author: Fabricate.attributes_for(:author, first_name: 'Karen'), id: author.id
-        expect(response).to redirect_to author_path(Author.first)
-      end
-
-      it "sets the success flash message" do
-        put :update, author: Fabricate.attributes_for(:author, first_name: 'Karen'), id: author.id
-        expect(flash[:success]).to eq('Author has been updated.')
+      it "redirects to the index page" do
+        delete :destroy, id: author.id
+        expect(response).to redirect_to authors_path
       end
     end
-
-    context "an unsucessful update" do
-      let(:author) { Fabricate(:author, first_name: 'Karen') }
-
-      it "updates the modified author object" do
-        put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
-        expect(Author.first.first_name).to eq('Karen')
-      end
-
-      it "renders the edit template" do
-        put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
-        expect(response).to render_template :edit
-      end
-
-      it "sets the danger flash message" do
-        put :update, author: Fabricate.attributes_for(:author, first_name: ''), id: author.id
-        expect(flash[:danger]).to eq('Author has not been updated.')
-      end
-    end
-  end
-
-  describe "DELETE #destroy" do
-    let(:author) { Fabricate(:author) }
-
-    it "deletes the author with a given ID" do 
-      delete :destroy, id: author
-      expect(Author.count).to eq(0)
-    end
-
-    it "sets the flash 'success' message" do
-      delete :destroy, id: author
-      expect(flash[:success]).to eq('Author has been deleted.')
-    end
-
-    it "redirects to the index page" do
-      delete :destroy, id: author
-      expect(response).to redirect_to authors_path
-    end
-  end
 end
