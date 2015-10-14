@@ -1,18 +1,19 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Author do
+RSpec.describe Author, :type => :model  do
   it "requires a first name" do 
     author = Fabricate.build(:author, first_name: nil)
 
     expect(author).not_to be_valid
-    expect(author.errors[:first_name].any?).to be_true
+    expect(author.errors[:first_name].any?).to be_truthy
   end
 
   it "requires a last name" do
-    author = Fabricate.build(:author, last_name: nil)
-    expect(author).not_to be_valid
 
-    expect(author.errors[:last_name].any?).to be_true
+    author = Fabricate.build(:author, last_name: nil)
+
+    expect(author).not_to be_valid
+    expect(author.errors[:last_name].any?).to be_truthy
   end
   
   describe "#full_name" do
@@ -21,6 +22,5 @@ describe Author do
 
       expect(author.full_name).to eq('Andrew Whatever')
     end
-    
   end
 end
