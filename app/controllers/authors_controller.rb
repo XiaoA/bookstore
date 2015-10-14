@@ -6,7 +6,6 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    
   end
 
   def new
@@ -25,12 +24,10 @@ class AuthorsController < ApplicationController
   end
 
   def edit
-    
     render :edit
   end
 
   def update
-    
     if @author.update(author_params)
       flash[:success] = "Author has been updated."
       redirect_to @author
@@ -41,7 +38,6 @@ class AuthorsController < ApplicationController
   end
 
   def destroy
-    
     if @author.destroy
       flash[:success] = "Author has been deleted."
       redirect_to authors_path
