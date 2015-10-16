@@ -11,10 +11,10 @@ RSpec.describe AuthorsController, :type => :controller do
 
     describe "GET #show" do
           it "returns a successful HTTP request status code" do
-        author = Fabricate(:author)
-        get :show, id: author.id
+            author = Fabricate(:author)
+            get :show, id: author.id
 
-        expect(response).to have_http_status(:success)
+            expect(response).to have_http_status(:success)
           end
     end
 
