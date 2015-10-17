@@ -1,2 +1,7 @@
-@import "bootsthrap-sprockets"
-@import "bootstrap"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+ul.sidebar-link {
+    list-style: none;
+}
+
