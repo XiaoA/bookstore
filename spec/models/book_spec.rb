@@ -9,7 +9,6 @@ RSpec.describe Book, :type => :model do
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:published_at) }
   it { should validate_presence_of(:publisher_id) }
-  xit { should validate_numericality_of(:page_count).only_integer }
-  xit { should validate_numericality_of(:price).is_greater_than_or_equal_to(0.0) }
+  it { should validate_numericality_of(:page_count).only_integer }
+  it { should validate_numericality_of(:price).is_greater_than_or_equal_to(0.0) }
 end
-
