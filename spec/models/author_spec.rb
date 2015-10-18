@@ -9,7 +9,6 @@ RSpec.describe Author, :type => :model  do
   end
 
   it "requires a last name" do
-
     author = Fabricate.build(:author, last_name: nil)
 
     expect(author).not_to be_valid
