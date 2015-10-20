@@ -1,5 +1,5 @@
 class Author < ActiveRecord::Base
-  has_many :publications
+  has_many :publications, dependent: :destroy
   has_many :books, through: :publications
   validates :first_name, presence: true
   validates :last_name, presence: true
