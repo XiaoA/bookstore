@@ -9,7 +9,6 @@ RSpec.describe Author, :type => :model  do
   end
 
   it "requires a last name" do
-
     author = Fabricate.build(:author, last_name: nil)
 
     expect(author).not_to be_valid
@@ -23,4 +22,7 @@ RSpec.describe Author, :type => :model  do
       expect(author.full_name).to eq('Andrew Whatever')
     end
   end
+
+  it { should have_many(:publications) }
+  it { should have_many(:books).through(:publications) }
 end
