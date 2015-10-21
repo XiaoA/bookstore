@@ -29,8 +29,9 @@ RSpec.describe BooksController, :type => :controller do
     context "a successful create" do
       before do
         post :create, book: Fabricate.attributes_for(:book)
-      end
+
       it "saves the new book object" do
+
         expect(Book.count).to eq(1)
       end
       it "redirects to the show action" do
@@ -39,8 +40,10 @@ RSpec.describe BooksController, :type => :controller do
       it "sets the success flash message" do
         expect(flash[:success]).to eq('Book has been created')
       end
-    end 
-
+     
+      end
+    end
+    
     context "unsuccessful create" do
       before do
         post :create, book: Fabricate.attributes_for(:book, title: nil)
