@@ -36,17 +36,25 @@
     </div>
   </div>
 
+  
   <div class='form-group'>
-    <label class='control-label col-sm-3'>Publisher</label>
+    <label class='control-label col-sm-3'>Book Cover</label>
     <div class='col-sm-9'>
-      <%= f.select :publisher_id, @publishers.map { |p| [p.name, p.id] }, prompt: 'Select a publisher', class: 'form-control', hide_label: true %>
+      <%= f.file_field , @publishers.map { |p| [p.name, p.id] }, prompt: 'Select a publisher', class: 'form-control', hide_label: true %>
     </div>
   </div>
 
   <div class='form-group'>
+    <label class='control-label col-sm-3'>Publication Date</label>
+    <div class='col-sm-9'>
+      <%= f.text_field :published_at, placeholder: 'Date format: yyyy-mm-dd', class: 'form-control', hide_label: true %>
+    </div>
+  </div>
+  
+  <div class='form-group'>
     <label class='control-label col-sm-3'>Book Cover</label>
     <div class='col-sm-9'>
-      <%= f.file_field :book_cover, placeholder: 'Book Cover', class: 'form-control', hide_label: true %>
+      <%= f.file_field :book_cover, class: 'form-control', hide_label: true %>
     </div>
   </div>
 
