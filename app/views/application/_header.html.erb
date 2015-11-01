@@ -1,23 +1,20 @@
 <header role="banner">
   <nav role="navigation" class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to "Bookstore", root_path, class: "navbar-brand" %>
+        <%= link_to "Bookstore App", root_path, class: "navbar-brand" %>
       </div>
-
-
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="active"><%= link_to "Home", root_path %></li>
           <li><%= link_to "Authors", authors_path %></li>
           <li><%= link_to "Books", books_path %></li>
+          <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "Sign Up", new_user_path %></li>
         </ul>
       </div>

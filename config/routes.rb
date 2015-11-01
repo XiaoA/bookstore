@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  root to: "authors#index"
+  root to: "catalogs#index"
 
   resources :authors
   resources :books
   resources :publishers
-  resources :users, only:[:new, :create, :show]
+  resources :users, only:[:index, :new, :create, :show]
+
 end
