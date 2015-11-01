@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Showing user profile' do
-  let!(:user) { Fabricate(:user, first_name: 'Sherlock', last_name: 'Holmes',
-                          email: 'sherlock@example.com') }
+  let!(:user) { Fabricate(:user, first_name: 'Sherlock', last_name: 'Holmes', email: 'sherlock@example.com') }
+  
   scenario do
     visit root_path
     click_link 'Users'
