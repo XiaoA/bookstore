@@ -5,8 +5,8 @@ Fabricator(:user) do
   password 'password'
   password_confirmation 'password'
   admin false
+end
 
-  Fabricator(:admin, from: :user) do
-    admin true
-  end
+Fabricator(:admin, from: :user) do
+  admin true
 end
