@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :books
   resources :publishers
   resources :users, only:[:index, :show, :new, :create]
-
+  resource :session
 
 end
