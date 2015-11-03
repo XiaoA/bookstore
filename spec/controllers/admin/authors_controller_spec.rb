@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/macros'
 
-RSpec.describe AuthorsController, :type => :controller do
+RSpec.describe Admin::AuthorsController, :type => :controller do
   let(:admin) { Fabricate(:admin) }
   let(:user) { Fabricate(:user) }
 
@@ -72,7 +72,7 @@ RSpec.describe AuthorsController, :type => :controller do
       it "redirects to the author show action" do
         post :create, author: Fabricate.attributes_for(:author)
 
-        expect(response).to redirect_to author_path(Author.first)
+        expect(response).to redirect_to admin_author_path(Author.first)
       end
 
       it "sets the 'success' flash message" do
@@ -121,7 +121,7 @@ RSpec.describe AuthorsController, :type => :controller do
 
       it "redirects to the show action " do
         put :update, author: Fabricate.attributes_for(:author, first_name: 'Karen'), id: author.id
-        expect(response).to redirect_to author_path(Author.first)
+        expect(response).to redirect_to admin_author_path(Author.first)
       end
 
       it "sets the success flash message" do
@@ -160,7 +160,7 @@ RSpec.describe AuthorsController, :type => :controller do
 
     it "redirects to the index page" do
       delete :destroy, id: author.id
-      expect(response).to redirect_to authors_path
+      expect(response).to redirect_to admin_authors_path
     end
   end
 end
