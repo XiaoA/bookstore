@@ -1,8 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Admin::BooksController, :type => :controller do
+  let(:admin) { Fabricate(:admin) }
+
+    before do
+      session[:user_id] = admin.id
+    end
+
   describe "GET #index" do
-    it "returns a successful http request stutus code" do
+    it "returns a successful http request status code" do
       get :index
 
       expect(response).to have_http_status(:success)
@@ -35,7 +41,7 @@ RSpec.describe Admin::BooksController, :type => :controller do
         expect(Book.count).to eq(1)
       end
       it "redirects to the show action" do
-        expect(response).to redirect_to book_path(Book.first)
+        expect(response).to redirect_to admin_book_path(Book.first)
       end
       it "sets the success flash message" do
         expect(flash[:success]).to eq('Book has been created')
@@ -85,7 +91,7 @@ RSpec.describe Admin::BooksController, :type => :controller do
 
       it "redirects to the show action" do
 
-        expect(response).to redirect_to book_path(Book.first)
+        expect(response).to redirect_to admin_book_path(Book.first)
       end
 
       it "sets the success flash message" do
@@ -128,7 +134,7 @@ RSpec.describe Admin::BooksController, :type => :controller do
     end
 
     it 'redirects to the index page' do
-      expect(response).to redirect_to books_path
+      expect(response).to redirect_to admin_books_path
     end
   end
 end

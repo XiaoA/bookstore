@@ -164,4 +164,3 @@ RSpec.describe Admin::AuthorsController, :type => :controller do
     end
   end
 end
-

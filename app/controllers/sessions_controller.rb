@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
         redirect_to session[:intended_destination]
         session[:intended_destination] = nil
       else
+        redirect_to root_path
       end
-      redirect_to root_path
     else
       flash.now[:danger] = "There was a problem with your email or password."
       render :new

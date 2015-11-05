@@ -8,7 +8,7 @@
   </header>
   <% @books.each do |book| %>
     <p class='book-title'>
-      <%= link_to book.title, book_path(book) %><br>
+      <%= link_to book.title, admin_book_path(book) %><br>
       <span class='price-class'><%= number_to_currency(book.price) %></span>
     </p>
     <div>
@@ -16,5 +16,5 @@
     </div>
   <% end %>
 <br>
-  <p><%= link_to 'Add New Book', new_book_path, class: 'btn btn-primary' %></p>
+  <p><%= link_to 'Add New Book', new_admin_book_path, class: 'btn btn-primary' %></p>
 </section>
