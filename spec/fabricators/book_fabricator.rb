@@ -1,3 +1,4 @@
+
 Fabricator(:book) do
   title { Faker::Book.title }
   isbn { Faker::Code.isbn }
