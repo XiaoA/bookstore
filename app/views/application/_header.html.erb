@@ -10,14 +10,20 @@
         <%= link_to "Bookstore App", root_path, class: "navbar-brand" %>
       </div>
       <div class="navbar-collapse collapse">
+        <%= form_tag(search_catalogs_path, class: "navbar-form navbar-left", role: "search") do %>
+          <div class="form-group">
+            <%= text_field_tag :search_word, nil, placeholder: "Search for books here", class: "form-control" %>
+          </div>
+          <%= submit_tag "Search", class: "btn btn-default" %>
+        <% end %>
         <ul class="nav navbar-nav">
           <li><%= link_to "Catalogs", catalogs_path %></li>
           <% if current_user && current_user.admin? %>
             <li class="active"><%= link_to "Authors", admin_authors_path %></li>
 
-          <li><%= link_to "Publishers", admin_publishers_path %></li>
-          <li><%= link_to "Books", admin_books_path %></li>
-          <li><%= link_to "Users", users_path %></li>
+            <li><%= link_to "Publishers", admin_publishers_path %></li>
+            <li><%= link_to "Books", admin_books_path %></li>
+            <li><%= link_to "Users", users_path %></li>
           <% end %>
           
           <% unless current_user %>
