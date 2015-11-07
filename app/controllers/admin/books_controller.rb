@@ -19,10 +19,10 @@ class Admin::BooksController < Admin::BaseController
   def create
     @book = Book.new(book_params)
     if @book.save
-      flash[:success] = 'Book has been created'
+      flash[:success] = 'Book has been created.'
       redirect_to [:admin, @book]
     else
-      flash.now[:danger] = 'Book has not been created'
+      flash.now[:danger] = 'Book has not been created.'
       @publishers = Publisher.all
       @authors = Author.all
       render :new
@@ -36,25 +36,28 @@ class Admin::BooksController < Admin::BaseController
 
   def update
     if @book.update(book_params)
-      flash[:success] = 'Book has been updated'
+      flash[:success] = 'Book has been updated.'
       redirect_to [:admin, @book]
     else
-      flash[:danger] = 'Book has not been updated'
+      flash[:danger] = 'Book has not been updated.'
+      @publishers = Publisher.all
+      @authors = Author.all
       render :edit
     end
   end
 
   def destroy
     if @book.destroy
-      flash[:success] = 'Book has been deleted'
+      flash[:success] = 'Book has been deleted.'
       redirect_to admin_books_path
     end
   end
 
   private
 
-  def book_params
-    params.require(:book).permit(:title, :isbn, :page_count, :price, :description, :published_at, :publisher_id, :author_ids, :book_cover)
+ 
+ def book_params
+    params.require(:book).permit(:title, :isbn, :page_count, :price, :description, :published_at, :publisher_id, :book_cover)
   end
 
   def set_book

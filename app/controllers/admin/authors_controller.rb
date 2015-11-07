@@ -27,7 +27,6 @@ class Admin::AuthorsController < Admin::BaseController
   end
 
   def edit
-    render :edit
   end
 
   def update
@@ -44,8 +43,6 @@ class Admin::AuthorsController < Admin::BaseController
     if @author.destroy
       flash[:success] = "Author has been deleted."
       redirect_to admin_authors_path
-    else
-      render :show
     end
   end
 

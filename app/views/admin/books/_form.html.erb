@@ -39,6 +39,7 @@
   <div class='form-group'>
     <label class='control-label col-sm-3'>Publisher</label>
     <div class='col-sm-9'>
+      require "pry"; binding.pry
       <%= f.select :publisher_id, @publishers.map { |p| [p.name, p.id] }, prompt: 'Select a publisher', class: 'form-control', hide_label: true %>
     </div>
   </div>

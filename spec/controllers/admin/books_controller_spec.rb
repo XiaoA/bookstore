@@ -44,7 +44,7 @@ RSpec.describe Admin::BooksController, :type => :controller do
         expect(response).to redirect_to admin_book_path(Book.first)
       end
       it "sets the success flash message" do
-        expect(flash[:success]).to eq('Book has been created')
+        expect(flash[:success]).to eq('Book has been created.')
       end
      
       end
@@ -62,7 +62,7 @@ RSpec.describe Admin::BooksController, :type => :controller do
         expect(response).to render_template :new
       end
       it "sets the failure flash message" do
-        expect(flash[:danger]).to eq('Book has not been created')
+        expect(flash[:danger]).to eq('Book has not been created.')
       end
     end
   end
@@ -96,7 +96,7 @@ RSpec.describe Admin::BooksController, :type => :controller do
 
       it "sets the success flash message" do
 
-        expect(flash[:success]).to eq('Book has been updated')
+        expect(flash[:success]).to eq('Book has been updated.')
       end
     end
 
@@ -112,7 +112,7 @@ RSpec.describe Admin::BooksController, :type => :controller do
 
       it "sets the failure flash message" do
 
-        expect(flash[:danger]).to eq('Book has not been updated')
+        expect(flash[:danger]).to eq('Book has not been updated.')
       end
     end #context
   end
@@ -129,7 +129,7 @@ RSpec.describe Admin::BooksController, :type => :controller do
     end
 
     it 'sets the flash message' do
-      expect(flash[:success]).to eq('Book has been deleted')
+      expect(flash[:success]).to eq('Book has been deleted.')
 
     end
 
