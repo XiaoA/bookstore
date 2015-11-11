@@ -3,7 +3,7 @@ class Cart < ActiveRecord::Base
   has_many :books, through: :cart_items
 
   def add_book_to_items(book_id)
-    cart_item = cart_items.where(book_id = book_id).first
+    cart_item = cart_items.where(book_id: book_id).first
 
     if cart_item.nil?
       book_price = Book.find(book_id).price

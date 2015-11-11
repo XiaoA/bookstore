@@ -5,7 +5,8 @@ RSpec.describe CartsController, type: :controller do
     let(:cart) { Fabricate(:cart) }
     it "returns a successful http request status code" do
       get :show, id: cart
-      expect(response).to have_http_status(:success)
+      #      expect(response).to have_http_status(:success)
+      expect(assigns(:cart)).to eq(cart)
     end
   end
 

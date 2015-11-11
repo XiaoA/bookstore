@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'base/index'
-
     resources :authors
     resources :books, except: [:new]
     resources :publishers, except: [:new]
@@ -22,11 +21,13 @@ Rails.application.routes.draw do
   resources :users, only:[:index, :show, :new, :create]
   resource :session, only: [:destroy]
   resources :carts, only: [:show, :destroy]
+  resources :cart_items, only: [:create]
+
   resources :catalogs, only: [:index, :show] do
     collection do
       post :search, to: 'catalogs#search'
     end
   end
 
-  resources :cart_items, only: [:create]
+  
 end
