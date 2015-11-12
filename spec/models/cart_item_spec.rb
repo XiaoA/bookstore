@@ -10,7 +10,7 @@ RSpec.describe CartItem, type: :model do
       cart = Fabricate(:cart)
       cart_item = Fabricate(:cart_item, cart_id: cart.id, book_id: book.id, price: book.price, quantity: 10)
 
-      expect(cart_item
+      expect(cart_item.line_total).to eq(300)
     end
   end
 

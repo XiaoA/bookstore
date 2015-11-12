@@ -5,7 +5,6 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    
     @cart.destroy
     session[:cart] = nil
     redirect_to catalogs_path
@@ -16,4 +15,5 @@ class CartsController < ApplicationController
   def find_cart
     @cart = Cart.find(params[:id])
   end
+
 end

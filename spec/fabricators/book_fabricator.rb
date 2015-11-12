@@ -9,4 +9,5 @@ Fabricator(:book) do
   price { Faker::Commerce.price }
   created_at { Faker::Date.backward }
   updated_at { Faker::Date.backward }
+  publisher
 end
