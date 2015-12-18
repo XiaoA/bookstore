@@ -13,9 +13,6 @@
       <span class='price-class'><%= number_to_currency(book.price) %></span>
     </p>
     <p class='book-image'><%= image_tag(book.book_cover_url(:thumb)) if book.book_cover? %></p>
-    <div>
-      <hr>
-    </div>
   <% end %>
   <br>
 </section>

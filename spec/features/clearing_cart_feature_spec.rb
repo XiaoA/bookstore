@@ -4,7 +4,7 @@ RSpec.feature "Deleting Carts" do
   let!(:pythonData) { Fabricate(:book, title: "Working with Data Structures in Python") }
 
   scenario "clear cart contents" do
-    visit "/"
+    visit ""
 
     expect(page).to have_link(pythonData.title)
     
@@ -12,7 +12,7 @@ RSpec.feature "Deleting Carts" do
     click_button "Add to cart"
     expect(page).to have_button("Clear cart")
 
-    click_button "Clear cart"
+    click_button "Clear cart", match: :first
     
     expect(current_path).to eq(catalogs_path)
   end

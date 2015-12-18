@@ -16,6 +16,6 @@ class Cart < ActiveRecord::Base
   end
 
   def total_sale
-    cart_items.map { |ci| ci.line_total }.reduce(:+)
+    cart_items.map { |ci| ci.line_total }.reduce(:+).to_f
   end
 end

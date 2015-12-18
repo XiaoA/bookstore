@@ -6,8 +6,9 @@ class CartsController < ApplicationController
 
   def destroy
     @cart.destroy
-    session[:cart] = nil
+    session[:cart_id] = nil
     redirect_to catalogs_path
+    flash[:success] = "The book was successfully removed from your cart."
   end
 
   private
