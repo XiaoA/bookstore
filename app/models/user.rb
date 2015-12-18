@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  has_many :addresses
 
+  has_secure_password
+  accepts_nested_attributes_for :addresses
+
+  
   validates :first_name, :last_name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false}, format: { with: /@/ }
 
