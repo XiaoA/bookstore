@@ -21,6 +21,7 @@ gem 'mini_magick'
 gem 'figaro'
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'will_paginate-bootstrap', '1.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
