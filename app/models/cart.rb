@@ -16,6 +16,10 @@ class Cart < ActiveRecord::Base
   end
 
   def total_sale
-    cart_items.map { |ci| ci.line_total }.reduce(:+).to_f
+    cart_items.map { |ci| ci.line_total }.reduce(:+) || 0.0
+  end
+
+  def total_sale_in_cents
+    (total_sale * 100).to_i
   end
 end
