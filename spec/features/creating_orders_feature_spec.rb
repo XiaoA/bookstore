@@ -23,6 +23,6 @@ RSpec.feature 'Creating Orders' do
     select '2050', from: "date_year"
     click_button 'Create Order'
 
-    expect(page).to have_content('
+    expect(page).to have_content('Your order has been submitted.')
   end
 end
