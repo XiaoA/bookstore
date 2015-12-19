@@ -1,0 +1,15 @@
+Dear <%= @customer.full_name %>
+
+   Thank you for your order. The details of your order are listed below.
+
+   <% @order.order_items.each do |item| %>
+     <%= item.quantity %> x <%= item.book.title %> <%= amount("#{item.line_total}") %>
+   <% end %>
+
+   Total order: <%= amount(@order.order_total) %>
+
+   If you have any questions, please do not hesitate to contact us.
+
+   Sincerely,
+   
+   Bookstore Sales Team
