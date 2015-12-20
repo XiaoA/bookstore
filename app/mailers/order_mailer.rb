@@ -8,4 +8,11 @@ class OrderMailer < ApplicationMailer
     mail to: @customer.email,
          subject: 'Order Confirmation'
   end
+
+  def send_password_reset_link(customer)
+    @customer = customer
+
+    mail to: @customer.email,
+         subject: 'Resetting your password'
+  end
 end

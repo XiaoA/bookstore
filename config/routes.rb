@@ -16,14 +16,17 @@ Rails.application.routes.draw do
 
   get '/add_publisher', to: 'admin/publishers#new', as: 'add_publisher'
   get '/add_book', to: 'admin/books#new', as: 'add_book'
-
+  get 'reset/password', to: 'password_resets#new'
+  
+  
   resources :books, only: [:show]
   resources :users, only:[:index, :show, :new, :create]
   resource :session, only: [:destroy]
   resources :carts, only: [:show, :destroy]
   resources :cart_items, only: [:create]
   resources :orders, only: [:new, :create]
-  
+  resources :password_resets, only: [:create]
+
   resources :catalogs, only: [:index, :show] do
     collection do
       post :search, to: 'catalogs#search'
