@@ -1,7 +1,7 @@
 <html>
   <head></head>
   <body>
-    Dear <%= @customer.full_name %><br>
+    Dear <%= @customer.full_name %>,<br>
 
     <p>Thank you for your order. The details of your order are listed below.</p>
 
@@ -13,10 +13,10 @@
     <p>Total order: <%= amount(@order.order_total) %></p><br>
 
     <p</p><br>
-    If you have any questions, please do not hesitate to contact us.
+    <p>If you have any questions, please do not hesitate to contact us.</p>
 
-    Sincerely,
-    
+    Sincerely,<br>
+    <br>
     Bookstore Sales Team
   </body>
 </html>
