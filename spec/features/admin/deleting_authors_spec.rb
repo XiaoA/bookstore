@@ -17,7 +17,6 @@ RSpec.feature 'Deleting Authors' do
     visit root_path
     click_link 'Authors'
     click_link author.full_name
-    print page.html
     click_link 'Delete'
 
     expect(page).to have_content('Author has been deleted.')

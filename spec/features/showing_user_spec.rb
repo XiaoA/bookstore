@@ -11,7 +11,6 @@ RSpec.feature 'Showing user profile' do
   scenario do
     visit root_path
     click_link 'Users'
-    print page.html
     click_link user.email
     within("h3.titles") do
       expect(page).to have_content('Sherlock Holmes')

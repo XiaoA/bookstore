@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/add_publisher', to: 'admin/publishers#new', as: 'add_publisher'
   get '/add_book', to: 'admin/books#new', as: 'add_book'
   get 'reset/password', to: 'password_resets#new'
+  get '/expired_token', to: 'password_resets#expired_token'
   
   
   resources :books, only: [:show]
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:show, :destroy]
   resources :cart_items, only: [:create]
   resources :orders, only: [:new, :create]
-  resources :password_resets, only: [:create]
+  resources :password_resets, only: [:create, :edit, :update]
 
   resources :catalogs, only: [:index, :show] do
     collection do

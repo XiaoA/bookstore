@@ -16,7 +16,6 @@ RSpec.feature 'Deleting Publishers' do
   scenario 'deleting an publisher' do
     visit root_path
     click_link 'Publishers'
-    print page.html
     click_link publisher.name
     click_link 'Delete'
 
