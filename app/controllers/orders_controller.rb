@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_cart
 
   def new
-    order = Order.new
+    @order = Order.new
   end
 
   def create

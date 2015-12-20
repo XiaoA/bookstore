@@ -32,6 +32,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'rb-fsevent' if `uname` =~ /Darwin/
   gem 'fabrication', '2.11.3'
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -47,4 +48,5 @@ group :test do
   gem 'capybara', '2.4.1'
   gem 'faker'
   gem 'shoulda-matchers'
+  gem 'database_cleaner', "~> 1.4"
 end

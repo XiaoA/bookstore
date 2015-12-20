@@ -8,7 +8,7 @@ RSpec.feature 'Creating Orders' do
     sign_in_as user
   end
 
-  scenario 'create a valid book', js: false do
+  scenario 'create a valid book', js: true do
 
     visit root_path
 
@@ -19,8 +19,8 @@ RSpec.feature 'Creating Orders' do
 
     fill_in 'Credit Card Number', with: '4242424242424242'
     fill_in 'Security Code', with: '123'
-    select '12 - October', from: "date_month"
-    select '2050', from: "date_year"
+    select '12 - December', from: "date_month"
+    select '2018', from: "date_year"
     click_button 'Create Order'
 
     expect(page).to have_content('Your order has been submitted.')
