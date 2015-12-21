@@ -1,3 +1,6 @@
 <% @users.each do |user|  %>
-  <%= link_to user.email, user %> <br>
+<div class="panel">
+  <strong>Name:</strong> <%= user.full_name %><br>
+  <strong>Email:</strong> <%= link_to user.email, user %>
+</div>
 <% end %>
