@@ -1,6 +1,11 @@
-<% @users.each do |user|  %>
-<div class="panel">
-  <strong>Name:</strong> <%= user.full_name %><br>
-  <strong>Email:</strong> <%= link_to user.email, user %>
+<div id="user-page-title" class="text-center">
+  <h2>User List</h2>
 </div>
-<% end %>
+<div class ="container-fluid">
+  <% @users.each do |user|  %>
+    <div class="panel">
+      <strong>Name:</strong> <%= user.full_name %><br>
+      <strong>Email:</strong> <%= link_to user.email, user %>
+    </div>
+  <% end %>
+</div>
