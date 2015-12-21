@@ -5,6 +5,15 @@
       <%= f.text_field :title, class: 'form-control', hide_label: true, placeholder: 'Title of the book', autofocus: true %>
     </div>
   </div>
+
+  <div class='form-group'>
+    <label class='control-label col-sm-3'>Author</label>
+    <div class='col-sm-9'>
+      <%= f.text_field :authors, class: 'form-control', hide_label: true, placeholder: 'Author', autofocus: true %>
+    </div>
+  </div>
+
+  
   <div class='form-group'>
     <label class='control-label col-sm-3'>ISBN</label>
     <div class='col-sm-9'>
@@ -39,7 +48,6 @@
   <div class='form-group'>
     <label class='control-label col-sm-3'>Publisher</label>
     <div class='col-sm-9'>
-      require "pry"; binding.pry
       <%= f.select :publisher_id, @publishers.map { |p| [p.name, p.id] }, prompt: 'Select a publisher', class: 'form-control', hide_label: true %>
     </div>
   </div>

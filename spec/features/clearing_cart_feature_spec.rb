@@ -12,7 +12,7 @@ RSpec.feature "Deleting Carts" do
     click_button "Add to cart"
     expect(page).to have_button("Clear cart")
 
-    click_button "Clear cart", match: :first
+    click_button "Clear cart"
     
     expect(current_path).to eq(catalogs_path)
   end
