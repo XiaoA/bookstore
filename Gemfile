@@ -2,11 +2,10 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.4'
-gem 'sqlite3'
+
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
@@ -33,6 +32,7 @@ group :development, :test do
   gem 'rb-fsevent' if `uname` =~ /Darwin/
   gem 'fabrication', '2.11.3'
   gem 'selenium-webdriver'
+  gem 'sqlite3'
 end
 
 group :development do
@@ -49,4 +49,9 @@ group :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'database_cleaner', "~> 1.4"
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
