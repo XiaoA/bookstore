@@ -17,9 +17,4 @@ class Book < ActiveRecord::Base
     where('title LIKE ?', "%#{title}%").order(:title)
   end
 
-  def display_book_authors(book)
-    book = @book
-    puts book
-  end
-
 end
