@@ -7,14 +7,17 @@
     <% end %>
   </header>
   <% @books.each do |book| %>
+
+    <p class='book-image'><%= image_tag(book.book_cover_url(:thumb)) if book.book_cover? %></p>
     <p class='book-title'>
       <%= link_to book.title, admin_book_path(book) %><br>
-      <span class='price-class'><%= number_to_currency(book.price) %></span>
+      <span class='price-class'><%= number_to_currency(book.price) %></span><br>
+
     </p>
     <div>
       <hr>
     </div>
   <% end %>
-<br>
+  <br>
   <p><%= link_to 'Add New Book', add_book_path, class: 'btn btn-primary' %></p>
 </section>

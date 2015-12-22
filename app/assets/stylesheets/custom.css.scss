@@ -15,7 +15,14 @@ ul.sidebar-link {
 }
 
 .navbar-default {
-    background-color: #B2d7ff;
+background: #a1d2fd; /* Old browsers */
+background: -moz-linear-gradient(top, #a1d2fd 0%, #cfedff 100%); /* FF3.6-15 */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a1d2fd), color-stop(100%,#cfedff)); /* Chrome4-9,Safari4-5 */
+background: -webkit-linear-gradient(top, #a1d2fd 0%,#cfedff 100%); /* Chrome10-25,Safari5.1-6 */
+background: -o-linear-gradient(top, #a1d2fd 0%,#cfedff 100%); /* Opera 11.10-11.50 */
+background: -ms-linear-gradient(top, #a1d2fd 0%,#cfedff 100%); /* IE10 preview */
+background: linear-gradient(to bottom, #a1d2fd 0%,#cfedff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a1d2fd', endColorstr='#cfedff',GradientType=0 ); /* IE6-9 */
 }
 
 #left sidebar
