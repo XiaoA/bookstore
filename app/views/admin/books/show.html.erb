@@ -4,6 +4,7 @@
       <header class='col-sm-12'>
         <h3 class='titles' id='book-show'><%= "#{@book.title}" %></h3>
       </header>
+      <hr>
       <div class='col-sm-12'>
         <div class='col-sm-3'>
           <strong>ISBN:</strong>
@@ -13,7 +14,6 @@
         </div>
       </div>
       <div class='col-sm-12'>
-        <hr>
       </div>
 
       <div class='col-sm-12'>
@@ -25,7 +25,6 @@
         </div>
       </div>
       <div class='col-sm-12'>
-        <hr>
       </div>
 
       <div class='col-sm-12'>
@@ -37,7 +36,7 @@
         </div>
       </div>
       <div class='col-sm-12'>
-        <hr>
+
       </div>
 
       <div class='col-sm-12'>
@@ -49,7 +48,7 @@
         </div>
       </div>
       <div class='col-sm-12'>
-        <hr>
+
       </div>
 
       <div class='col-sm-12'>
@@ -61,7 +60,7 @@
         </div>
       </div>
       <div class='col-sm-12'>
-        <hr>
+
       </div>
 
       <div class='col-sm-12'>
@@ -73,7 +72,7 @@
         </div>
       </div>
       <div class='col-sm-12'>
-        <hr>
+
       </div>
 
       <div class='col-sm-12'>
@@ -83,19 +82,20 @@
 
       </div>
       <div class='col-sm-12'>
-        <hr>
+
       </div>
     </div>
   </div>
-</section>
+  <hr>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-1">
 
-<% content_for(:sidebar) do %>
-  <h4 class='cartless'>Actions</h4>
-  <hr class='sidebar-hr'>
-  <ul class='sidebar-link'>
-    <li><%= link_to 'Edit', edit_admin_book_path(@book), class: 'btn btn-default btnwidth' %></li>
-    <li><%= link_to 'Delete', admin_book_path(@book), method: :delete, class: 'btn btn-default btnwidth',
-        data: { confirm: "Are you sure you want to delete #{@book.title}?"} %></li>
-  </ul>
-  <hr class='sidebar-hr'>
-<% end %>
+          <%= link_to 'Edit', edit_admin_book_path(@book), class: 'btn btn-success btnwidth btn-sidebar-success' %>
+
+           <%= link_to 'Delete', admin_book_path(@book), method: :delete, class: 'btn btn-danger btn-sidebar-danger',
+                data: { confirm: "Are you sure you want to delete #{@book.title}?"} %>
+          </div>
+        </div>
+  </div>
+</section>

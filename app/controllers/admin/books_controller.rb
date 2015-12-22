@@ -3,9 +3,10 @@ class Admin::BooksController < Admin::BaseController
 
   def index
     @books = Book.all
-  end
+   end
   
   def show
+    @authors = @book.authors
   end
   
   def new
@@ -18,6 +19,7 @@ class Admin::BooksController < Admin::BaseController
 
   def create
     @book = Book.new(book_params)
+
     if @book.save
       flash[:success] = 'Book has been created.'
       redirect_to [:admin, @book]
@@ -55,9 +57,14 @@ class Admin::BooksController < Admin::BaseController
 
   private
 
+  def find_book_authors(book_params)
+    book = @book
+    author_ids = @author_ids
+    author_ids
+  end
  
  def book_params
-    params.require(:book).permit(:title, :isbn, :page_count, :price, :description, :published_at, :publisher_id, :book_cover)
+    params.require(:book).permit(:title, :isbn, :page_count, :price, :description, :published_at, :publisher_id, :book_cover, author_ids: [])
   end
 
   def set_book

@@ -16,4 +16,10 @@ class Book < ActiveRecord::Base
   def self.search_by_title(title)
     where('title LIKE ?', "%#{title}%").order(:title)
   end
+
+  def display_book_authors(book)
+    book = @book
+    puts book
+  end
+
 end

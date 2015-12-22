@@ -14,7 +14,7 @@
     <% @books.each do |book| %>
     <p class='book-title'>
       <%= link_to book.title, catalog_path(book) %><br>
-      <span class='book-author'><%= book.authors(@book) %></span>
+      <span class='book-author'><%= book.authors %></span>
 
     </p>
     <p class='book-image'><%= image_tag(book.book_cover_url(:thumb)) if book.book_cover? %></p>
