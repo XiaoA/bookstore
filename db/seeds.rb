@@ -21,7 +21,7 @@ Publisher.create!([
                     {name: 'Faber and Faber'},
                     {name: 'Macmillan Publishers'}
                   ])
-Book.create!(title: "GNU Emacs for Developers", isbn: '10-0123456789', page_count: 360, price: 39.99, description: 'A book about the Emacs text editor', published_at: '2012-11-12', publisher_id: 1, book_cover: File.open(File.join(Rails.root, 'app/assets/images/emacs.jpg')))
+Book.create!(title: "GNU Emacs for Developers", isbn: '1090123456789', page_count: 360, price: 39.99, description: 'A book about the Emacs text editor', published_at: '2012-11-12', publisher_id: 1, book_cover: File.open(File.join(Rails.root, 'app/assets/images/emacs.jpg')))
 Book.create!(title: "Becoming a Vim Master", isbn: "1112223334445", description: "a book", published_at: "2015-12-06", publisher_id: 1, page_count: 100, price: 39.99, created_at: "2015-12-21 06:15:27", updated_at: "2015-12-21 06:15:27", book_cover: nil)
 
 Book.create!(title: "Database Design for Designers", isbn: "2223334445556", description: "a book", published_at: "2015-12-06", publisher_id: 1, page_count: 100, price: 59.99, created_at: "2015-12-21 06:15:27", updated_at: "2015-12-21 06:15:27", book_cover: nil)
