@@ -6,7 +6,6 @@ class Admin::BooksController < Admin::BaseController
    end
   
   def show
-    @authors = @book.authors
   end
   
   def new
