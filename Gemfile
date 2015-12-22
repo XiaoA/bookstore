@@ -56,6 +56,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :test, :darwin do
+group :darwin do
   gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
