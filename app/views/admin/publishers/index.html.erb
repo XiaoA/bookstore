@@ -8,14 +8,8 @@
   </header>
 
   <% @publishers.each do |publisher| %>
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= link_to publisher.name, [:admin, publisher] %><br>
-      </div>
-    </div>
+    <%= link_to publisher.name, [:admin, publisher] %><br>
+    <hr>
   <% end %>
-
-  <hr>
   <p><%= link_to 'Add New publisher', add_publisher_path, class: 'btn btn-primary' %></p>
-
 </section>
