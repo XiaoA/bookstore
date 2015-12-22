@@ -10,19 +10,27 @@
       </header>
     </div>
   </div>
-  <div class="col-md-12"
-    <% @books.each do |book| %>
-    <p class='book-title'>
-      <%= link_to book.title, catalog_path(book) %><br>
-      <span class='book-author'><%= book.authors %></span>
 
-    </p>
-    <p class='book-image'><%= image_tag(book.book_cover_url(:thumb)) if book.book_cover? %></p>
-    <span class='price-class'><%= number_to_currency(book.price) %></span>
-    <hr>
-    <% end %>
-  </div>
-  <div id="paginate" class="col-md-6 col-md-offset-3">
+  <% @books.each do |book| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title"><%= link_to book.title, catalog_path(book) %></div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-2">
+            <p class='book-image'><%= image_tag(book.book_cover_url(:thumb)) if book.book_cover? %></p>
+          </div>
+          <div class="col-md-8">
+            <p class="book-description"><%= book.description %></p>
+            <span class='price-class'>Your price: <%= number_to_currency(book.price) %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div id="paginate">
     <%= will_paginate @books, renderer: BootstrapPagination::Rails, class: "pull-left paginate" %>
   </div>
 </section>
