@@ -29,7 +29,7 @@ group :development, :test do
   gem 'rspec-rails', '3.3'
   gem 'spring-commands-rspec'
   gem 'guard-rspec'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
+
   gem 'fabrication', '2.11.3'
   gem 'selenium-webdriver'
   gem 'sqlite3'
@@ -54,4 +54,8 @@ end
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+end
+
+group :test, :darwin do
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
