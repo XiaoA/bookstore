@@ -55,7 +55,3 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
-
-group :darwin do
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
-end
